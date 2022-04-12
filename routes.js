@@ -1,18 +1,26 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Data from './model/model.js';
 const router = express.Router();
 
 router.get('/getAll', async (req, res) => {
 	try {
-		const data = await Data.find();
+		const data = await Data.find({}, { _id: 0 });
 		res.json(data);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
 });
 
-router.get('/10prompt', (req, res) => {
-	res.send('Here are 10 prompts');
+router.get('/random', async (req, res) => {
+	try {
+		const count = await Data.countDocuments();
+		const random = Math.floor(Math.random() * count + 1);
+		const data = await Data.find({ id: random }, { _id: 0 });
+		res.send(data);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
 });
 
 export default router;

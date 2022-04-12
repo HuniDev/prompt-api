@@ -5,6 +5,7 @@ const dataSchema = new mongoose.Schema(
 		_id: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Data',
+			required: false,
 		},
 		prompts: {
 			type: String,
