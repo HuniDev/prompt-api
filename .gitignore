@@ -1,0 +1,11 @@
+.env
+.DS_Store
+*.log
+.eslintcache
+.env.development.local
+.env.local
+.env.production.local
+.cache
+.temp
+.npm
+logs
