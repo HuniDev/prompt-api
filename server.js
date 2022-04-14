@@ -16,6 +16,10 @@ database.once('connected', () => {
 });
 
 const app = express();
+
+app.get('/', (req, res) => {
+	res.send('Welcome to prompt API');
+});
 app.use('/api', router);
 app.use(express.json());
 
