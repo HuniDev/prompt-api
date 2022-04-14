@@ -24,7 +24,10 @@ router.get('/random', async (req, res) => {
 
 router.get('/10', async (req, res) => {
 	try {
-		const data = await Data.aggregate([{ $sample: { size: 10 } }]);
+		const data = await Data.aggregate([
+			{ $project: { _id: 0 } },
+			{ $sample: { size: 10 } },
+		]);
 		res.send(data);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
@@ -33,7 +36,10 @@ router.get('/10', async (req, res) => {
 
 router.get('/5', async (req, res) => {
 	try {
-		const data = await Data.aggregate([{ $sample: { size: 5 } }]);
+		const data = await Data.aggregate([
+			{ $project: { _id: 0 } },
+			{ $sample: { size: 5 } },
+		]);
 		res.send(data);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
