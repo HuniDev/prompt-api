@@ -2,10 +2,6 @@ import express from 'express';
 import Data from './model/model.js';
 const router = express.Router();
 
-router.get('/', (req, res) => {
-	res.send('Welcome to the Prompt API');
-});
-
 router.get('/getAll', async (req, res) => {
 	try {
 		const data = await Data.find({}, { _id: 0 });
