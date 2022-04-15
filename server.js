@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import router from './routes.js';
 import 'dotenv/config';
+import cors from 'cors';
 
 const mongoString = process.env.DATABASE_URL;
 
@@ -21,6 +22,8 @@ app.get('/', (req, res) => {
 	res.send('Welcome to prompt API');
 });
 
+app.use(cors());
+app.options('*', cors());
 app.use('/api', router);
 app.use(express.json());
 
