@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 app.use(
 	cors({
-		origin: 'https://writing-prompt-generator.netlify.app/',
+		origin: 'https://writing-prompt-generator.netlify.app',
 	})
 );
 app.use('/api', router);
