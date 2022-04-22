@@ -22,11 +22,19 @@ app.get('/', (req, res) => {
 	res.send('Welcome to prompt API');
 });
 
-app.use(
-	cors({
-		origin: 'https://writing-prompt-generator.netlify.app',
-	})
-);
+app.use((req, res, next) => {
+	res.header(
+		'Access-Control-Allow-Origin',
+		'https://writing-prompt-generator.netlify.app'
+	);
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	);
+	res.header('Access-Control-Allow-Methods', 'GET');
+	next();
+});
+
 app.use('/api', router);
 app.use(express.json());
 
