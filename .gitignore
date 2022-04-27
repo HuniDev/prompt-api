@@ -9,5 +9,5 @@
 .temp
 .npm
 logs
-.node_modules
+node_modules/
 .Procfile
